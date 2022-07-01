@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -18,10 +20,13 @@ public class Doctor implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	
 	private String doctorId;
+	@NotNull
+	@NotBlank(message="First Name is mandatory")
 	private String firstName;
+	@NotNull
+	@NotBlank(message="First Name is mandatory")
 	private String lastName;
 	private String address;
 	private long  contactNo;

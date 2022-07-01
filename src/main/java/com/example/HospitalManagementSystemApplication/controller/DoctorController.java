@@ -2,6 +2,8 @@ package com.example.HospitalManagementSystemApplication.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,10 +27,11 @@ public class DoctorController {
 		@Autowired
 		DoctorService doctorService;
 		@PostMapping
-		public ResponseEntity<Doctor> saveDoctor(@RequestBody Doctor doctor)
+		public ResponseEntity<Doctor> saveDoctor(@Valid @RequestBody Doctor doctor)
 		{
 			return new ResponseEntity<Doctor>(doctorService.saveDoctor(doctor),HttpStatus.CREATED);
 		}
+		
 		@GetMapping
 		public List<Doctor> getDoctorList()
 		{
